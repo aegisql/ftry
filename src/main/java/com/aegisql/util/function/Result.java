@@ -11,10 +11,10 @@ package com.aegisql.util.function;
  */
 public class Result <T> {
 	
-	/** The res. */
+	/** The result value. */
 	protected final T res;
 	
-	/** The th. */
+	/** The error object */
 	protected final Throwable th;
 	
 	/**
@@ -30,7 +30,7 @@ public class Result <T> {
 
 	
 	/**
-	 * Instantiates a new result.
+	 * Instantiates a new Result.
 	 *
 	 * @param t the t
 	 */
@@ -39,7 +39,7 @@ public class Result <T> {
 	}
 	
 	/**
-	 * Instantiates a new result.
+	 * Instantiates a new Result.
 	 *
 	 * @param th the th
 	 */
@@ -48,7 +48,7 @@ public class Result <T> {
 	}
 
 	/**
-	 * Gets the.
+	 * Gets the result value.
 	 *
 	 * @return the t
 	 */
@@ -57,7 +57,7 @@ public class Result <T> {
 	}
 
 	/**
-	 * Error.
+	 * Get Error object
 	 *
 	 * @return the throwable
 	 */
@@ -68,7 +68,7 @@ public class Result <T> {
 	/**
 	 * Checks for error.
 	 *
-	 * @return true, if successful
+	 * @return true, if has error
 	 */
 	public boolean hasError() {
 		return th != null;
@@ -77,7 +77,7 @@ public class Result <T> {
 	/**
 	 * Checks if is present.
 	 *
-	 * @return true, if is present
+	 * @return true, if result is not null
 	 */
 	public boolean isPresent() {
 		return res != null;

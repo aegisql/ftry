@@ -4,14 +4,18 @@
 package com.aegisql.util.function;
 
 /**
- * The Interface StatusSupplier.
+ * Represents a supplier of Result Status.
+ *
+ * <p>There is no requirement that a new or distinct result be returned each
+ * time the StatusSupplier is invoked.
+ *
  * @author Mikhail Teplitskiy
  */
 @FunctionalInterface
 public interface StatusSupplier {
 	
 	/**
-	 * Eval.
+	 * gets Result Status
 	 *
 	 * @return the eval status
 	 */
