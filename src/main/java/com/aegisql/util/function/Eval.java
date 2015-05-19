@@ -79,7 +79,7 @@ public interface Eval <TH extends Throwable> {
 	/**
 	 * To CodeBlock.
 	 *
-	 * @param Return result of evaluation via mutable AtomicBoolean parameter.
+	 * @param res Return result of evaluation via mutable AtomicBoolean parameter.
 	 * @return the CodeBlock
 	 */
 	public default CodeBlock toCodeBlock(AtomicBoolean res) {

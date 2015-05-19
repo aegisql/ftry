@@ -24,7 +24,7 @@ import com.aegisql.util.log.TestingAppender;
 
 /**
  * The Class TryTest.
-  * @author Mikhail Teplitskiy
+ * @author Mikhail Teplitskiy
 */
 public class TryTest {
 
