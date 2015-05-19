@@ -1,40 +1,91 @@
+/*
+ *Copyright (c) 2015, AEGIS DATA SOLUTIONS, All rights reserved. 
+ */
 package com.aegisql.util.function;
 
+/**
+ * The Class Result.
+ * @author Mikhail Teplitskiy
+ *
+ * @param <T> the generic type of the stored value
+ */
 public class Result <T> {
 	
+	/** The res. */
 	protected final T res;
+	
+	/** The th. */
 	protected final Throwable th;
 	
+	/**
+	 * Instantiates a new result.
+	 *
+	 * @param t the t
+	 * @param th the th
+	 */
 	protected Result(T t,Throwable th) {
 		this.res = t;
 		this.th  = th;
 	}
 
 	
+	/**
+	 * Instantiates a new result.
+	 *
+	 * @param t the t
+	 */
 	public Result(T t) {
 		this(t, null);
 	}
 	
+	/**
+	 * Instantiates a new result.
+	 *
+	 * @param th the th
+	 */
 	public Result(Throwable th) {
 		this((T)null, th);
 	}
 
+	/**
+	 * Gets the.
+	 *
+	 * @return the t
+	 */
 	public T get() {
 		return res;
 	}
 
+	/**
+	 * Error.
+	 *
+	 * @return the throwable
+	 */
 	public Throwable error() {
 		return th;
 	}
 
+	/**
+	 * Checks for error.
+	 *
+	 * @return true, if successful
+	 */
 	public boolean hasError() {
 		return th != null;
 	}
 
+	/**
+	 * Checks if is present.
+	 *
+	 * @return true, if is present
+	 */
 	public boolean isPresent() {
 		return res != null;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -44,6 +95,9 @@ public class Result <T> {
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -63,6 +117,9 @@ public class Result <T> {
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
 		return "Result [val=" + res + "; error=" + (th==null?"null":th.getMessage()) + "]";

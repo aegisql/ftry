@@ -1,3 +1,6 @@
+/*
+ *Copyright (c) 2015, AEGIS DATA SOLUTIONS, All rights reserved. 
+ */
 package com.aegisql.util.function;
 
 import java.util.Objects;
@@ -6,19 +9,42 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * The Class Try.
+ * @author Mikhail Teplitskiy
+ */
 public class Try {
 	
+	/** The Constant log. */
 	public static final Logger log = LoggerFactory.getLogger(Try.class);
 	
+	/** The code block. */
 	private final CodeBlock codeBlock;
+	
+	/** The exception handler. */
 	private ExceptionHandler<?> exceptionHandler;
+	
+	/** The final block. */
 	private CodeBlock finalBlock = () -> {};
 	
+	/**
+	 * Instantiates a new try.
+	 *
+	 * @param codeBlock the code block
+	 */
 	public Try(CodeBlock codeBlock) {
 		Objects.requireNonNull(codeBlock);
 		this.codeBlock = codeBlock;
 	}
 	
+	/**
+	 * Or catch.
+	 *
+	 * @param <T> the generic type
+	 * @param exceptionClass the exception class
+	 * @param exceptionBlock the exception block
+	 * @return the try
+	 */
 	public <T extends Throwable> Try orCatch(Class<T> exceptionClass, ExceptionBlock<T> exceptionBlock) {
 		Objects.requireNonNull(exceptionClass);
 		Objects.requireNonNull(exceptionBlock);
@@ -34,12 +60,24 @@ public class Try {
 		return this;
 	}
 	
+	/**
+	 * With final.
+	 *
+	 * @param finalBlock the final block
+	 * @return the try
+	 */
 	public Try withFinal(CodeBlock finalBlock) {
 		Objects.requireNonNull(finalBlock);
 		this.finalBlock = finalBlock;
 		return this;
 	}
 	
+	/**
+	 * Evaluator builder.
+	 *
+	 * @param <TH> the generic type
+	 * @return the throwing function
+	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static <TH extends Throwable> 
 		ThrowingFunction<CodeBlock,         //Final
@@ -64,6 +102,12 @@ public class Try {
 		};
 	}
 	
+	/**
+	 * Evaluator.
+	 *
+	 * @return the eval
+	 * @throws Throwable the throwable
+	 */
 	Eval<?> evaluator() throws Throwable {
 		return Try.<Throwable>evaluatorBuilder()
 			.apply(finalBlock)
@@ -71,6 +115,11 @@ public class Try {
 			.apply(codeBlock);
 	}
 
+	/**
+	 * Runtime evaluator.
+	 *
+	 * @return the eval
+	 */
 	Eval<RuntimeException> runtimeEvaluator() {
 		return (Eval<RuntimeException>) Try.<RuntimeException>evaluatorBuilder()
 			.apply(finalBlock)
@@ -78,6 +127,13 @@ public class Try {
 			.apply(codeBlock).wrapThrowable();
 	}
 
+	/**
+	 * Checked evaluator.
+	 *
+	 * @param <TH> the generic type
+	 * @param eClass the e class
+	 * @return the eval
+	 */
 	<TH extends Throwable> Eval<TH> checkedEvaluator(Class<TH> eClass) {
 		try {
 			Eval<TH> ev = Try.<TH>evaluatorBuilder()
@@ -91,6 +147,11 @@ public class Try {
 		}
 	}
 
+	/**
+	 * Wraped evaluator.
+	 *
+	 * @return the status supplier
+	 */
 	StatusSupplier wrapedEvaluator() {
 		try {
 			final Eval<?> j = evaluatorBuilder()
@@ -110,6 +171,11 @@ public class Try {
 		}
 	}
 
+	/**
+	 * Gets the registered error types.
+	 *
+	 * @return the registered error types
+	 */
 	public Set<Class<? extends Throwable>> getRegisteredErrorTypes() {
 		return exceptionHandler.getRegisteredExceptionClasses();
 	}
