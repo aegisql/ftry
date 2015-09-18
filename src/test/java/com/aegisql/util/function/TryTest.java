@@ -138,7 +138,7 @@ public class TryTest {
 		})
 		;
 
-		Result<Boolean> result = t.wrapedEvaluator().eval();
+		Result<Boolean> result = t.wrappedEvaluator().eval();
 		assertTrue(result.get());
 	}
 
@@ -201,7 +201,7 @@ public class TryTest {
 		})
 		;
 
-		Result<Boolean> result = t.wrapedEvaluator().eval();
+		Result<Boolean> result = t.wrappedEvaluator().eval();
 		System.out.println(result);
 		assertFalse(result.get());
 	}
@@ -293,7 +293,7 @@ public class TryTest {
 		})
 		;
 
-		EvalStatus result = t.wrapedEvaluator().eval();
+		EvalStatus result = t.wrappedEvaluator().eval();
 		System.out.println(result);
 		assertFalse(result.success());
 	}

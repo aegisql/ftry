@@ -148,11 +148,11 @@ public class Try {
 	}
 
 	/**
-	 * Wraped evaluator.
+	 * Wrapped evaluator.
 	 *
 	 * @return the status supplier
 	 */
-	StatusSupplier wrapedEvaluator() {
+	StatusSupplier wrappedEvaluator() {
 		try {
 			final Eval<?> j = evaluatorBuilder()
 				.apply(finalBlock)
