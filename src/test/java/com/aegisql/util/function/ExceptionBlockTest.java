@@ -609,7 +609,7 @@ public class ExceptionBlockTest {
 			log.debug("   in Exception "+e.getMessage());
 		};
 
-		ExceptionBlock<Exception> eb2 = eb1.logStackTrace("Intercepted: ", log, "debug").andDieAs(RuntimeException.class, "in RuntimeException");
+		ExceptionBlock<Exception> eb2 = eb1.logDebug(log, "Intercepted: {} {}\n","param1","param2").andDieAs(RuntimeException.class, "in RuntimeException");
 
 		eb1.accept(new Exception("E"));
 		try{
