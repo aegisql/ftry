@@ -13,3 +13,6 @@ try {
   finish();
 }
 ```
+## Release history
+
+1.0.0
