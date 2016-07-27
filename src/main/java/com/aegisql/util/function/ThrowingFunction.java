@@ -6,6 +6,7 @@ package com.aegisql.util.function;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Interface ThrowingFunction.
  * @author Mikhail Teplitskiy

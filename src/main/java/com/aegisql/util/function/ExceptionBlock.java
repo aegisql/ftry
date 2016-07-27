@@ -9,6 +9,7 @@ import java.util.function.Function;
 
 import org.slf4j.Logger;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Interface ExceptionBlock.
  * @author Mikhail Teplitskiy
@@ -124,9 +125,9 @@ public interface ExceptionBlock <T extends Throwable> {
 	/**
 	 * Log debug stack trace.
 	 *
-	 * @param preffix the preffix of the log message
 	 * @param log the SLF4J logger
-	 * @param params - variables supported by the SLF4J 
+	 * @param preffix the preffix of the log message
+	 * @param params - variables supported by the SLF4J
 	 * @return the exception block
 	 */
 	public default ExceptionBlock<T> logError(Logger log, String preffix, Object... params) {
@@ -141,9 +142,9 @@ public interface ExceptionBlock <T extends Throwable> {
 	/**
 	 * Log warn stack trace.
 	 *
-	 * @param preffix the preffix of the log message
 	 * @param log the SLF4J logger
-	 * @param params - variables supported by the SLF4J 
+	 * @param preffix the preffix of the log message
+	 * @param params - variables supported by the SLF4J
 	 * @return the exception block
 	 */
 	public default ExceptionBlock<T> logWarn(Logger log, String preffix, Object... params) {
@@ -158,9 +159,9 @@ public interface ExceptionBlock <T extends Throwable> {
 	/**
 	 * Log info stack trace.
 	 *
-	 * @param preffix the preffix of the log message
 	 * @param log the SLF4J logger
-	 * @param params - variables supported by the SLF4J 
+	 * @param preffix the preffix of the log message
+	 * @param params - variables supported by the SLF4J
 	 * @return the exception block
 	 */
 	public default ExceptionBlock<T> logInfo(Logger log, String preffix, Object... params) {
@@ -175,9 +176,9 @@ public interface ExceptionBlock <T extends Throwable> {
 	/**
 	 * Log debug stack trace.
 	 *
-	 * @param preffix the preffix of the log message
 	 * @param log the SLF4J logger
-	 * @param params - variables supported by the SLF4J 
+	 * @param preffix the preffix of the log message
+	 * @param params - variables supported by the SLF4J
 	 * @return the exception block
 	 */
 	public default ExceptionBlock<T> logDebug(Logger log, String preffix, Object... params) {
@@ -192,9 +193,9 @@ public interface ExceptionBlock <T extends Throwable> {
 	/**
 	 * Log trace stack trace.
 	 *
-	 * @param preffix the preffix of the log message
 	 * @param log the SLF4J logger
-	 * @param params - variables supported by the SLF4J 
+	 * @param preffix the preffix of the log message
+	 * @param params - variables supported by the SLF4J
 	 * @return the exception block
 	 */
 	public default ExceptionBlock<T> logTrace(Logger log, String preffix, Object... params) {

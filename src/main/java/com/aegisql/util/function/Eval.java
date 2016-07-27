@@ -7,6 +7,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Functional Interface Eval.
  * @author Mikhail Teplitskiy
@@ -19,10 +20,10 @@ public interface Eval <TH extends Throwable> {
 	 * Represents code evaluator
 	 * 
 	 * <p>There is no requirement that a new or distinct result be returned each
-     * time the supplier is invoked.
+	 * time the supplier is invoked.
 	 *
 	 * @return true, if successful
-	 * @throws TH
+	 * @throws TH the th
 	 */
 	public boolean eval() throws TH;
 
@@ -46,7 +47,7 @@ public interface Eval <TH extends Throwable> {
 	}
 	
 	/**
-	 * Wrap throwable unto a RuntimeException
+	 * Wrap throwable unto a RuntimeException.
 	 *
 	 * @return the Eval
 	 */
@@ -55,7 +56,7 @@ public interface Eval <TH extends Throwable> {
 	}
 	
 	/**
-	 * Wrap throwable into a provided Throwable object
+	 * Wrap throwable into a provided Throwable object.
 	 *
 	 * @param <TH2> the generic type
 	 * @param eClass the e class

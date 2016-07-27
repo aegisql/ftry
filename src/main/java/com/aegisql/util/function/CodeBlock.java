@@ -5,6 +5,7 @@ package com.aegisql.util.function;
 
 import java.util.Objects;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Interface CodeBlock.
  * @author Mikhail Teplitskiy
@@ -13,7 +14,7 @@ import java.util.Objects;
 public interface CodeBlock {
 	
 	/**
-	 * Represents Code Block evaluator
+	 * Represents Code Block evaluator.
 	 *
 	 * @throws Throwable the throwable
 	 */
@@ -22,6 +23,7 @@ public interface CodeBlock {
     /**
      * Returns a CodeBlock that always returns its input argument.
      *
+     * @param it the it
      * @return a CodeBlock that always returns its input argument
      */
 	public default CodeBlock identity(CodeBlock it) {
@@ -38,8 +40,6 @@ public interface CodeBlock {
      * @return a composed CodeBlock that first applies this function and then
      * applies the {@code after} CodeBlock
      * @throws NullPointerException if after is null
-     * @throws Throwable
-     *
      * @see #compose(CodeBlock)
      */	public default CodeBlock andThen(CodeBlock after) {
 		Objects.requireNonNull(after);
@@ -59,8 +59,6 @@ public interface CodeBlock {
       * @return a composed CodeBlock that first applies the {@code before}
       * CodeBlock and then applies this CodeBlock
       * @throws NullPointerException if before is null
-      * @throws Throwable
-      *
       * @see #andThen(CodeBlock)
       */
 	public default CodeBlock compose(CodeBlock before) {

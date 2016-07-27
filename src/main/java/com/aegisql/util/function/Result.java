@@ -3,6 +3,7 @@
  */
 package com.aegisql.util.function;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Result.
  * @author Mikhail Teplitskiy
@@ -14,7 +15,7 @@ public class Result <T> {
 	/** The result value. */
 	protected final T res;
 	
-	/** The error object */
+	/**  The error object. */
 	protected final Throwable th;
 	
 	/**
@@ -57,7 +58,7 @@ public class Result <T> {
 	}
 
 	/**
-	 * Get Error object
+	 * Get Error object.
 	 *
 	 * @return the throwable
 	 */

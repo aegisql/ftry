@@ -33,6 +33,7 @@ import org.slf4j.LoggerFactory;
 import com.aegisql.util.log.Log4JTestingAppender;
 import com.aegisql.util.log.TestingAppender;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class ExceptionBlockTest.
  * @author Mikhail Teplitskiy

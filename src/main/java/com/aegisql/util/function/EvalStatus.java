@@ -3,6 +3,7 @@
  */
 package com.aegisql.util.function;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class EvalStatus.
  * @author Mikhail Teplitskiy

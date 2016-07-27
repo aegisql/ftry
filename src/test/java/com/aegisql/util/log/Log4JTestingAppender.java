@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import org.apache.log4j.AppenderSkeleton;
 import org.apache.log4j.spi.LoggingEvent;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Log4JTestingAppender.
  * @author Mikhail Teplitskiy

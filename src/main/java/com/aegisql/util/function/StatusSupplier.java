@@ -3,6 +3,7 @@
  */
 package com.aegisql.util.function;
 
+// TODO: Auto-generated Javadoc
 /**
  * Represents a supplier of Result Status.
  *
@@ -15,7 +16,7 @@ package com.aegisql.util.function;
 public interface StatusSupplier {
 	
 	/**
-	 * gets Result Status
+	 * gets Result Status.
 	 *
 	 * @return the eval status
 	 */

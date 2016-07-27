@@ -5,6 +5,7 @@ package com.aegisql.util.log;
 
 import java.util.ArrayList;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Interface TestingAppender.
  * @author Mikhail Teplitskiy
