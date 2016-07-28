@@ -1,5 +1,5 @@
 # ftry
-Functional wrapper for try-catch block in Java
+# Functional wrapper for try-catch block in Java
 
 This is a fully functional analog of Java's
 ```java
@@ -33,3 +33,12 @@ boolean result = t.evaluator().eval();
 ## Release history
 
 1.0.0
+
+## maven dependency
+```xml
+<dependency>
+    <groupId>com.aegisql</groupId>
+    <artifactId>ftry</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
