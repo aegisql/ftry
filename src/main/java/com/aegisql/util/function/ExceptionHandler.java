@@ -172,7 +172,7 @@ public class ExceptionHandler<T extends Throwable> implements ExceptionBlock<T> 
 				Constructor<R> con = wr.getConstructor(Throwable.class);
 				return con.newInstance(thr);
 			} catch (Exception e) {
-				throw new RuntimeException("String,Throwable constructor is unavailable for "+wr.getName(),e);
+				throw new RuntimeException("(Throwable) constructor is unavailable for "+wr.getName(),e);
 			}
 		};
 	}
@@ -190,7 +190,7 @@ public class ExceptionHandler<T extends Throwable> implements ExceptionBlock<T> 
 				Constructor<R> con = wr.getConstructor(String.class,Throwable.class);
 				return con.newInstance(str,thr);
 			} catch (Exception e) {
-				throw new RuntimeException("String,Throwable constructor is unavailable for "+wr.getName(),e);
+				throw new RuntimeException("(String,Throwable) constructor is unavailable for "+wr.getName(),e);
 			}
 		};
 	}
