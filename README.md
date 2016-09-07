@@ -27,12 +27,18 @@ Try t = new Try(()->{
   finish();
 });
 
-boolean result = t.evaluator().eval();
+boolean result = t.evaluator(Exception.class).eval();
 ```
 
 ## Release history
 
+1.0.1
+
+bugfixes, simplified evaluator interface
+
 1.0.0
+
+First release
 
 ## maven dependency
 ```xml
