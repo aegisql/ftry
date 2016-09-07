@@ -45,6 +45,9 @@ First release
 <dependency>
     <groupId>com.aegisql</groupId>
     <artifactId>ftry</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
+
+Check for latest version at http://mvnrepository.com/artifact/com.aegisql/ftry
+
