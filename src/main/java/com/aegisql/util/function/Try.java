@@ -104,24 +104,11 @@ public class Try {
 	}
 	
 	/**
-	 * Evaluator.
-	 *
-	 * @return the eval
-	 * @throws Throwable the throwable
-	 */
-	Eval<?> evaluator() throws Throwable {
-		return Try.<Throwable>evaluatorBuilder()
-			.apply(finalBlock)
-			.apply(exceptionHandler)
-			.apply(codeBlock);
-	}
-
-	/**
 	 * Runtime evaluator.
 	 *
 	 * @return the eval
 	 */
-	Eval<RuntimeException> runtimeEvaluator() {
+	public Eval<RuntimeException> runtimeEvaluator() {
 		return (Eval<RuntimeException>) Try.<RuntimeException>evaluatorBuilder()
 			.apply(finalBlock)
 			.apply(exceptionHandler)
@@ -135,7 +122,7 @@ public class Try {
 	 * @param eClass the e class
 	 * @return the eval
 	 */
-	<TH extends Throwable> Eval<TH> checkedEvaluator(Class<TH> eClass) {
+	public <TH extends Throwable> Eval<TH> evaluator(Class<TH> eClass) {
 		try {
 			Eval<TH> ev = Try.<TH>evaluatorBuilder()
 				.apply(finalBlock)
@@ -153,7 +140,7 @@ public class Try {
 	 *
 	 * @return the status supplier
 	 */
-	StatusSupplier wrappedEvaluator() {
+	public StatusSupplier wrappedEvaluator() {
 		try {
 			final Eval<?> j = evaluatorBuilder()
 				.apply(finalBlock)

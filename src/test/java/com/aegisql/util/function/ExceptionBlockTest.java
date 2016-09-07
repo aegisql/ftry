@@ -398,11 +398,11 @@ public class ExceptionBlockTest {
 			.orCatch(Throwable.class, ebThr);
 		;
 		
-		assertExceptionHandler("in A: A",tA.evaluator(),"A",a);
+		assertExceptionHandler("in A: A",tA.evaluator(Throwable.class),"A",a);
 
 		Try tA1 = new Try(()-> { throw a1; }).orCatch(Throwable.class, eh);
 		
-		assertExceptionHandler("in A1: A1",tA1.evaluator(),"A1",a1);
+		assertExceptionHandler("in A1: A1",tA1.evaluator(Throwable.class),"A1",a1);
 
 	}
 	
@@ -770,7 +770,7 @@ public class ExceptionBlockTest {
 	 * @throws Throwable the throwable
 	 */
 	@Test
-	public void testNestedTryWithUnCathedRuntimeException() throws Throwable {
+	public void testNestedTryWithUnCathedRuntimeException() {
 
 		Try t = new Try(()->{
 			System.out.println("testNestedTryWithUnCathedRuntimeException");
@@ -783,7 +783,7 @@ public class ExceptionBlockTest {
 		})
 		;
 
-		Try n = new Try( t.evaluator().toCodeBlock() ).orCatch(Exception.class, (Exception e)->{
+		Try n = new Try( t.evaluator(Exception.class).toCodeBlock() ).orCatch(Exception.class, (Exception e)->{
 			System.out.println("Nested Exception: "+e.getMessage());
 		});
 		
@@ -810,7 +810,7 @@ public class ExceptionBlockTest {
 		;
 
 		AtomicBoolean ab = new AtomicBoolean(true);
-		Try n = new Try( t.evaluator().toCodeBlock(ab) )
+		Try n = new Try( t.evaluator(Throwable.class).toCodeBlock(ab) )
 			.orCatch(Exception.class, (Exception e)->{
 				System.out.println("Nested Exception: "+e.getMessage());
 			});

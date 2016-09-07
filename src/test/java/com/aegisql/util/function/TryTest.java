@@ -90,7 +90,7 @@ public class TryTest {
 	 * @throws Throwable the throwable
 	 */
 	@Test
-	public void testSimpleTry() throws Throwable {
+	public void testSimpleTry() throws Exception {
 
 		Try t = new Try(()->{
 			System.out.println("SimpleTryTest");
@@ -101,7 +101,7 @@ public class TryTest {
 		})
 		;
 
-		boolean result = t.evaluator().eval();
+		boolean result = t.evaluator(Exception.class).eval();
 		assertTrue(result);
 	}
 
@@ -162,7 +162,7 @@ public class TryTest {
 		})
 		;
 
-		boolean result = t.evaluator().eval();
+		boolean result = t.evaluator(Throwable.class).eval();
 		assertFalse(result);
 	}
 
@@ -214,7 +214,7 @@ public class TryTest {
 	 * @throws Throwable the throwable
 	 */
 	@Test(expected=Exception.class)
-	public void testSimpleTryWithUnCathedException() throws Throwable {
+	public void testSimpleTryWithUnCathedException() throws Exception {
 
 		Try t = new Try(()->{
 			System.out.println("SimpleTryTest");
@@ -227,7 +227,7 @@ public class TryTest {
 		})
 		;
 
-		boolean result = t.evaluator().eval();
+		boolean result = t.evaluator(Exception.class).eval();
 		assertFalse(result);
 	}
 
@@ -271,7 +271,7 @@ public class TryTest {
 		})
 		;
 
-		Eval<Exception> ev = t.<Exception>checkedEvaluator(Exception.class);
+		Eval<Exception> ev = t.evaluator(Exception.class);
 		boolean result = ev.eval();
 		assertFalse(result);
 	}
@@ -305,7 +305,7 @@ public class TryTest {
 	 * @throws Throwable the throwable
 	 */
 	@Test(expected=Exception.class)
-	public void testSimpleTryWithUnCathedUnHandeledException() throws Throwable {
+	public void testSimpleTryWithUnCathedUnHandeledException() throws Exception {
 
 		Try t = new Try(()->{
 			System.out.println("SimpleTryTest");
@@ -315,7 +315,7 @@ public class TryTest {
 		})
 		;
 
-		boolean result = t.evaluator().eval();
+		boolean result = t.evaluator(Exception.class).eval();
 		assertFalse(result);
 	}
 
