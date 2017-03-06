@@ -1,6 +1,8 @@
 # ftry
 # Functional wrapper for try-catch block in Java
 
+Tutorial: https://github.com/aegisql/ftry/wiki
+
 This is a fully functional analog of Java's
 ```java
 try {
