@@ -106,6 +106,79 @@ public class TryTest {
 	}
 
 	/**
+	 * Test simple try.
+	 *
+	 * @throws Throwable the throwable
+	 */
+	@Test
+	public void testSimpleMultyExceptionTry() throws Exception {
+
+		Try t = new Try(()->{
+			System.out.println("SimpleTryTest");
+			int x = 2/0;
+		}).orCatchOneOf(e->{
+			System.out.println("SimpleTryTest Exception: "+e.getMessage());
+		},NullPointerException.class,ArithmeticException.class).withFinal(()->{
+			System.out.println("SimpleTryTest finalize");
+		})
+		;
+
+		EvalStatus result = t.wrappedEvaluator().eval();
+		assertFalse(result.res);
+		System.out.println(result);
+		
+	}
+
+
+	/**
+	 * Test simple try.
+	 *
+	 * @throws Throwable the throwable
+	 */
+	@Test
+	public void testSimpleMultyExceptionTry2() throws Exception {
+
+		Try t = new Try(()->{
+			System.out.println("SimpleTryTest");
+			throw new NullPointerException("NPE in testSimpleMultyExceptionTry2");
+		}).orCatchOneOf(e->{
+			System.out.println("SimpleTryTest Exception: "+e.getMessage());
+		},NullPointerException.class,ArithmeticException.class).withFinal(()->{
+			System.out.println("SimpleTryTest finalize");
+		})
+		;
+
+		EvalStatus result = t.wrappedEvaluator().eval();
+		assertFalse(result.res);
+		System.out.println(result);
+		
+	}
+
+	/**
+	 * Test simple try.
+	 *
+	 * @throws Throwable the throwable
+	 */
+	@Test
+	public void testSimpleMultyExceptionTry3() throws Exception {
+
+		Try t = new Try(()->{
+			System.out.println("testSimpleMultyExceptionTry3");
+			throw new IllegalArgumentException("Illegal Arg in testSimpleMultyExceptionTry3");
+		}).orCatchOneOf(e->{
+			System.out.println("testSimpleMultyExceptionTry3 Exception: "+e.getMessage());
+			fail("Unexpected error handling");
+		},NullPointerException.class,ArithmeticException.class);
+
+		EvalStatus result = t.wrappedEvaluator().eval();
+		assertFalse(result.res);
+		System.out.println(result);
+		assertNotNull(result.error());
+		assertEquals("Illegal Arg in testSimpleMultyExceptionTry3", result.error().getMessage());
+	}
+
+	
+	/**
 	 * Test simple checked try.
 	 */
 	@Test

@@ -37,6 +37,8 @@ public class ExceptionHandler<T extends Throwable> implements ExceptionBlock<T> 
 	/** The exception block. */
 	private final ExceptionBlock<T> exceptionBlock;
 	
+	private boolean isTerminal = true;
+	
 	/**
 	 * Instantiates a new exception handler.
 	 *
@@ -121,15 +123,16 @@ public class ExceptionHandler<T extends Throwable> implements ExceptionBlock<T> 
 				}
 
 				try {
-					if(!tFe && !eFt) {
-						log.trace("Try <{}> anyway:<{}>",tClass.getSimpleName(),errClass.getSimpleName());
-						this.accept((T)t);
+					if(!tFe && !eFt && !isTerminal) {
+						log.trace("Try <{}> anyway with:<{}>",tClass.getSimpleName(),errClass.getSimpleName());
+						T ex = (T)t;
+						this.accept(ex);
 						return;
 					}
 				} catch(Throwable x) {
 					if(x == t) {
 						if(!oFe && !eFo) {
-							log.trace("Try <{}> anyway:<{}>",t2Class.getSimpleName(),errClass.getSimpleName());
+							log.trace("Try <{}> last time with:<{}>",t2Class.getSimpleName(),errClass.getSimpleName());
 							eb.accept(t);
 							return;
 						}
@@ -154,7 +157,7 @@ public class ExceptionHandler<T extends Throwable> implements ExceptionBlock<T> 
 				throw t3;
 			}
 		});
-		
+		eh.isTerminal = false;
 		eh.registeredClasses.addAll(this.registeredClasses);
 		
 		return eh;

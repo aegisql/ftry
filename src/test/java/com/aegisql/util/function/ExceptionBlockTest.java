@@ -360,7 +360,7 @@ public class ExceptionBlockTest {
 		assertExceptionHandler("in A2: A21",eh,a21);
 		assertExceptionHandler("in A: A3",eh,a3);
 
-		//These all excected in Throwable
+		//These all expected in Throwable
 		assertExceptionHandler("in Throwable: B",eh,b);
 		assertExceptionHandler("in Throwable: B1",eh,b1);
 		assertExceptionHandler("in Throwable: B2",eh,b2);

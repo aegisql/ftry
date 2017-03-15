@@ -26,7 +26,7 @@ public class Try {
 	private ExceptionHandler<?> exceptionHandler;
 	
 	/** The final block. */
-	private CodeBlock finalBlock = () -> {};
+	private CodeBlock finalBlock = () -> {}; //default - doing nothing
 	
 	/**
 	 * Instantiates a new try.
@@ -60,6 +60,23 @@ public class Try {
 		}
 		return this;
 	}
+
+	/**
+	 * Or catch.
+	 *
+	 * @param exceptionBlock the exception block
+	 * @param exceptionClasses the exception class tuple
+	 * @return the try
+	 */
+	public Try orCatchOneOf(ExceptionBlock<? extends Throwable> exceptionBlock,Class<? extends Throwable>... exceptionClasses) {
+		Objects.requireNonNull(exceptionClasses);
+		Objects.requireNonNull(exceptionBlock);
+		for(Class t: exceptionClasses) {
+			orCatch(t,exceptionBlock);
+		}
+		return this;
+	}
+
 	
 	/**
 	 * With final.
