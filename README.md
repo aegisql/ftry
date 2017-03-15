@@ -34,6 +34,10 @@ boolean result = t.evaluator(Exception.class).eval();
 
 ## Release history
 
+1.0.2
+
+bugfix, catch multiple exceptions with one ExceptionBlock
+
 1.0.1
 
 bugfixes, simplified evaluator interface
