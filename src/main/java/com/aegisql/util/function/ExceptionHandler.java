@@ -16,14 +16,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ExceptionHandler.
  * @author Mikhail Teplitskiy
  *
  * @param <T> the generic type
  */
-public class ExceptionHandler<T extends Throwable> implements ExceptionBlock<T> {
+public final class ExceptionHandler<T extends Throwable> implements ExceptionBlock<T> {
 	
 	/** The Constant log. */
 	public static final Logger log = LoggerFactory.getLogger(ExceptionHandler.class);
@@ -37,7 +36,8 @@ public class ExceptionHandler<T extends Throwable> implements ExceptionBlock<T> 
 	/** The exception block. */
 	private final ExceptionBlock<T> exceptionBlock;
 	
-	private boolean isTerminal = true;
+	/** The terminal flag */
+	private final boolean isTerminal;
 	
 	/**
 	 * Instantiates a new exception handler.
@@ -49,8 +49,23 @@ public class ExceptionHandler<T extends Throwable> implements ExceptionBlock<T> 
 		this.exceptionClass = exceptionClass;
 		this.exceptionBlock = exceptionBlock;
 		this.registeredClasses.add(exceptionClass);
+		this.isTerminal = true;
 	}
-	
+
+	/**
+	 * Instantiates a new exception handler.
+	 *
+	 * @param exceptionClass the exception class
+	 * @param exceptionBlock the exception block
+	 * @param terminal the terminal flag
+	 */
+	private ExceptionHandler(Class<T> exceptionClass, ExceptionBlock<T> exceptionBlock, boolean isTerminal) {
+		this.exceptionClass = exceptionClass;
+		this.exceptionBlock = exceptionBlock;
+		this.registeredClasses.add(exceptionClass);
+		this.isTerminal = false;
+	}
+
 	/* (non-Javadoc)
 	 * @see com.aegisql.util.function.ExceptionBlock#accept(java.lang.Throwable)
 	 */
@@ -156,8 +171,7 @@ public class ExceptionHandler<T extends Throwable> implements ExceptionBlock<T> 
 			} catch (Throwable t3) {
 				throw t3;
 			}
-		});
-		eh.isTerminal = false;
+		},false);
 		eh.registeredClasses.addAll(this.registeredClasses);
 		
 		return eh;
