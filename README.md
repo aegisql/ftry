@@ -6,7 +6,7 @@ Tutorial: https://github.com/aegisql/ftry/wiki
 This is a fully functional analog of Java's
 ```java
 try {
-   doSomething(); // this code can throw E1 or E2 or unchecked exceptiuons
+   doSomething(); // this code can throw E1 or E2 or unchecked exceptions
 } catch(E1 e1) {
    processE1();
 } catch(E2 e2) {
@@ -20,7 +20,7 @@ Same code can be overwritten using the ftry library:
 
 ```java
 Try t = new Try(
-   this::doSomething() // this code can throw E1 or E2 or unchecked exceptiuons 
+   this::doSomething // this code can throw E1 or E2 or unchecked exceptions 
 ).orCatch(E1.class,
     e->processE1()
 ).orCatch(E2.class, 
