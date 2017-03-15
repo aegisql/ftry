@@ -154,6 +154,11 @@ public class TryTest {
 		
 	}
 
+	public void doSomething() {
+		System.out.println("testSimpleMultyExceptionTry3");
+		throw new IllegalArgumentException("Illegal Arg in testSimpleMultyExceptionTry3");		
+	}
+	
 	/**
 	 * Test simple try.
 	 *
@@ -162,10 +167,7 @@ public class TryTest {
 	@Test
 	public void testSimpleMultyExceptionTry3() throws Exception {
 
-		Try t = new Try(()->{
-			System.out.println("testSimpleMultyExceptionTry3");
-			throw new IllegalArgumentException("Illegal Arg in testSimpleMultyExceptionTry3");
-		}).orCatchOneOf(e->{
+		Try t = new Try(this::doSomething).orCatchOneOf(e->{
 			System.out.println("testSimpleMultyExceptionTry3 Exception: "+e.getMessage());
 			fail("Unexpected error handling");
 		},NullPointerException.class,ArithmeticException.class);

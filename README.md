@@ -19,15 +19,15 @@ try {
 Same code can be overwritten using the ftry library:
 
 ```java
-Try t = new Try(()->{
-   doSomething(); // this code can throw E1 or E2 or unchecked exceptiuons
-}).orCatch(E1.class, (E1 e)->{
-   processE1();
-}).orCatch(E2.class, (E2 e)->{
-   processE2();
-}).withFinal(()->{
-  finish();
-});
+Try t = new Try(
+   this::doSomething() // this code can throw E1 or E2 or unchecked exceptiuons 
+).orCatch(E1.class,
+    e->processE1()
+).orCatch(E2.class, 
+    e->processE2()
+).withFinal(
+    this::finish()
+);
 
 boolean result = t.evaluator(Exception.class).eval();
 ```
