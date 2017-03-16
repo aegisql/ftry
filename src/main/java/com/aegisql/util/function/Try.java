@@ -3,6 +3,7 @@
  */
 package com.aegisql.util.function;
 
+import java.io.Closeable;
 import java.util.Objects;
 import java.util.Set;
 
@@ -65,14 +66,18 @@ public class Try {
 	 * Or catch.
 	 *
 	 * @param exceptionBlock the exception block
+	 * @param exceptionClass the exception class. At least one required
 	 * @param exceptionClasses the exception class tuple
 	 * @return the try
 	 */
-	public Try orCatchOneOf(ExceptionBlock<? extends Throwable> exceptionBlock,Class<? extends Throwable>... exceptionClasses) {
-		Objects.requireNonNull(exceptionClasses);
+	public Try orCatchOneOf(ExceptionBlock<? extends Throwable> exceptionBlock,Class<? extends Throwable> exceptionClass, Class<? extends Throwable>... exceptionClasses) {
+		Objects.requireNonNull(exceptionClass);
 		Objects.requireNonNull(exceptionBlock);
-		for(Class t: exceptionClasses) {
-			orCatch(t,exceptionBlock);
+		orCatch((Class)exceptionClass, exceptionBlock);
+		if(exceptionClasses != null) {
+			for(Class t: exceptionClasses) {
+				orCatch(t,exceptionBlock);
+			}
 		}
 		return this;
 	}
@@ -86,9 +91,30 @@ public class Try {
 	 */
 	public Try withFinal(CodeBlock finalBlock) {
 		Objects.requireNonNull(finalBlock);
-		this.finalBlock = finalBlock;
+		this.finalBlock = this.finalBlock.andThen(finalBlock);
 		return this;
 	}
+
+	/**
+	 * With final.
+	 *
+	 * @param closeable the closeable
+	 * @param more the more closeables
+	 * @return the try
+	 */
+	public Try withFinal(Closeable closeable, Closeable... more) {
+		Objects.requireNonNull(closeable);
+		this.withFinal(()->{
+			closeable.close();
+			if(more != null) {
+				for(Closeable c: more) {
+					c.close();
+				}
+			}
+		});
+		return this;
+	}
+
 	
 	/**
 	 * Evaluator builder.
